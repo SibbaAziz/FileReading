@@ -1,4 +1,5 @@
-﻿using FileReading.Reading.Xml;
+﻿using FileReading.Encryption;
+using FileReading.Reading.Xml;
 using FileReading.Security;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
@@ -97,5 +98,22 @@ namespace FileReading.Test
             Assert.AreEqual("", xml);
         }
 
+        [TestMethod]
+        public void EncryptedRead()
+        {
+            //Arrange
+            IFileEncryption encryption = new XmlReverseFileEncryption(); 
+            var reader = new XmlEncryptedFileReader(encryption);
+
+            //Act 
+            var xml = reader.Read("EncryptedXml.xml");
+
+            //Assert 
+            Assert.AreEqual(
+                            "<Person>" +
+                            "<Id>1</Id>" +
+                            "<Name>Paul</Name>" +
+                            "</Person>", xml);
+        }
     }
 }

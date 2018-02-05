@@ -42,12 +42,14 @@
   <ItemGroup>
     <Compile Include="Encryption\IFileEncryption.cs" />
     <Compile Include="Encryption\ReverseFileEncryption.cs" />
+    <Compile Include="Encryption\XmlReverseFileEncryption.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reading\IEncryptedFileReader.cs" />
     <Compile Include="Reading\IFileReader.cs" />
     <Compile Include="Reading\IRoleBasedFileReader.cs" />
     <Compile Include="Reading\Text\TextEncryptedFileReader.cs" />
     <Compile Include="Reading\Text\TextFileReader.cs" />
+    <Compile Include="Reading\Xml\XmlEncryptedFileReader.cs" />
     <Compile Include="Reading\Xml\XmlFileReader.cs" />
     <Compile Include="Reading\Xml\XmlRoleBasedFileReader.cs" />
     <Compile Include="Security\ISecurity.cs" />
