@@ -49,6 +49,7 @@
     <Compile Include="Reading\IRoleBasedFileReader.cs" />
     <Compile Include="Reading\Text\TextEncryptedFileReader.cs" />
     <Compile Include="Reading\Text\TextFileReader.cs" />
+    <Compile Include="Reading\Text\TextRoleBasedFileReader.cs" />
     <Compile Include="Reading\Xml\XmlEncryptedFileReader.cs" />
     <Compile Include="Reading\Xml\XmlFileReader.cs" />
     <Compile Include="Reading\Xml\XmlRoleBasedFileReader.cs" />
