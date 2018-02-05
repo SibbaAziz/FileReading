@@ -47,6 +47,9 @@
     <Compile Include="Reading\IEncryptedFileReader.cs" />
     <Compile Include="Reading\IFileReader.cs" />
     <Compile Include="Reading\IRoleBasedFileReader.cs" />
+    <Compile Include="Reading\Json\JsonEncryptedFileReader.cs" />
+    <Compile Include="Reading\Json\JsonFileReader.cs" />
+    <Compile Include="Reading\Json\JsonRoleBasedFileReader.cs" />
     <Compile Include="Reading\Text\TextEncryptedFileReader.cs" />
     <Compile Include="Reading\Text\TextFileReader.cs" />
     <Compile Include="Reading\Text\TextRoleBasedFileReader.cs" />

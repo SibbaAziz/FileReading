@@ -1,25 +1,25 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using FileReading.Reading.Text;
+using FileReading.Reading.Json;
 using FileReading.Encryption;
-using FileReading.Security;
 using System.Collections.Generic;
+using FileReading.Security;
 
 namespace FileReading.Test
 {
     [TestClass]
-    public class TextFile
+    public class JsonFile
     {
         [TestMethod]
         public void Read()
         {
             //Arrange
-            var reader = new TextFileReader();
+            var reader = new JsonFileReader();
 
             //Act 
-            var text = reader.Read("Text.txt");
+            var json = reader.Read("File.json");
             //Assert 
-            Assert.AreEqual("Test text file reader", text);
+            Assert.AreEqual("{\r\n\"Id\" : 5,\r\n\"Name\" : \"Paul\"\r\n}", json);
         }
 
         [TestMethod]
@@ -27,12 +27,12 @@ namespace FileReading.Test
         {
             //Arrange
             IFileEncryption encryption = new ReverseFileEncryption();
-            var reader = new TextEncryptedFileReader(encryption);
+            var reader = new JsonEncryptedFileReader(encryption);
 
             //Act 
-            var text = reader.Read("EncryptedText.txt");
+            var json = reader.Read("EncryptedFile.json");
             //Assert 
-            Assert.AreEqual("Test text file reading", text);
+            Assert.AreEqual("{\"Id\" : 5,\"Name\" : \"Paul\"}", json);
         }
 
         [TestMethod]
@@ -40,12 +40,12 @@ namespace FileReading.Test
         {
             //Arrange
             ISecurity security = new RoleBasedSecurity(Role.Admin);
-            var reader = new TextRoleBasedFileReader(security);
+            var reader = new JsonRoleBasedFileReader(security);
 
             //Act 
-            var text = reader.Read("Text.txt");
+            var json = reader.Read("File.json");
             //Assert 
-            Assert.AreEqual("Test text file reader", text);
+            Assert.AreEqual("{\r\n\"Id\" : 5,\r\n\"Name\" : \"Paul\"\r\n}", json);
         }
 
         [TestMethod]
@@ -54,16 +54,16 @@ namespace FileReading.Test
             //Arrange
             List<string> accessibleFiles = new List<string>()
             {
-                "Text.txt"
+                "File.json"
             };
             ISecurity security = new RoleBasedSecurity(Role.User, accessibleFiles);
 
-            var reader = new TextRoleBasedFileReader(security);
+            var reader = new JsonRoleBasedFileReader(security);
 
             //Act 
-            var text = reader.Read("Text.txt");
+            var json = reader.Read("File.json");
             //Assert 
-            Assert.AreEqual("Test text file reader", text);
+            Assert.AreEqual("{\r\n\"Id\" : 5,\r\n\"Name\" : \"Paul\"\r\n}", json);
         }
 
         [TestMethod]
@@ -73,12 +73,12 @@ namespace FileReading.Test
 
             ISecurity security = new RoleBasedSecurity(Role.User, null);
 
-            var reader = new TextRoleBasedFileReader(security);
+            var reader = new JsonRoleBasedFileReader(security);
 
             //Act 
-            var text = reader.Read("Text.txt");
+            var json = reader.Read("File.json");
             //Assert 
-            Assert.AreEqual("", text);
+            Assert.AreEqual("", json);
         }
 
         [TestMethod]
@@ -91,12 +91,12 @@ namespace FileReading.Test
             };
             ISecurity security = new RoleBasedSecurity(Role.User, accessibleFiles);
 
-            var reader = new TextRoleBasedFileReader(security);
+            var reader = new JsonRoleBasedFileReader(security);
 
             //Act 
-            var text = reader.Read("Text.txt");
+            var json = reader.Read("File.json");
             //Assert 
-            Assert.AreEqual("", text);
+            Assert.AreEqual("", json);
         }
     }
 }
